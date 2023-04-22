@@ -1,0 +1,11 @@
+---
+export interface Props {
+    h: number;
+    w: number;
+}
+
+const {h, w} = Astro.props;
+
+---
+
+<img height={h} width={w} src="/public/logo.svg" alt="logo">

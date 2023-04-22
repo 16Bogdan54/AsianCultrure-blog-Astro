@@ -1,0 +1,19 @@
+---
+export interface Props {
+    max_w: number;
+}
+
+const {max_w} = Astro.props;
+---
+
+<main>
+    <slot/>
+</main>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: {max_w}ch;
+	}
+</style>
