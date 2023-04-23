@@ -1,8 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
 import Navigation from '../components/Navigation.astro';
 ---
 
 <Layout title="China">
-    
+    <Container max_w={60}>
+	    <Navigation/>
+		<h1>China</h1>
+	</Container>
 </Layout>
