@@ -1,19 +1,22 @@
 ---
+import { log } from 'astro/dist/core/logger/core';
+
 export interface Props {
     max_w: number;
 }
 
-const {max_w} = Astro.props;
+let {max_w} = Astro.props;
+const width: string = max_w.toString().concat('ch')
 ---
 
 <main>
     <slot/>
 </main>
 
-<style>
+<style define:vars={{width}}>
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: {max_w}ch;
+		max-width: var(--width);
 	}
 </style>
