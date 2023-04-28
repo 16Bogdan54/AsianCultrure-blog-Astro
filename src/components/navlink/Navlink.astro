@@ -1,0 +1,13 @@
+---
+import style from './navlink.module.css'
+
+export interface Props {
+	href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a class={style.navlink} href={href}>
+    <slot/>
+</a>
