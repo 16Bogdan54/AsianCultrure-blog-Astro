@@ -1,20 +1,15 @@
 ---
+import BaseLayout from "./BaseLayout.astro";
+
 const { frontmatter } = Astro.props;
 ---
 
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Article: {frontmatter.title}</title>
-		<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-	</head>
-	<body>
-        <h1>{frontmatter.title}</h1>
-        <p>Written by {frontmatter.author}</p>
-	</body>
-</html>
+<BaseLayout title={`Article | ${frontmatter.title}`}>
+	<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+	<h2>{frontmatter.title}</h2>
+    <p>Written by {frontmatter.author}</p>
+	<p>Published on: {frontmatter.pubDate.slice(0,10)}</p>
+	<hr>
+	<p>{frontmatter.description}</p>
+</BaseLayout>
