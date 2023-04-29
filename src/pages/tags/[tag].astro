@@ -19,7 +19,7 @@ const { posts } = Astro.props;
 // @ts-ignore
 const filteredPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
 ---
----
+
 <BaseLayout title={tag ? tag : "title"}>
   <p>Posts tagged with {tag}</p>
   <ul>
