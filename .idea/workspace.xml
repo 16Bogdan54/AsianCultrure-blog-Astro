@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="341c520c-fca8-4576-b2e0-4b43f17d60a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/AsianCultrure-blog-Astro.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Container.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Container.astro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.astro" afterDir="false" />
-    </list>
+    <list default="true" id="341c520c-fca8-4576-b2e0-4b43f17d60a7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,6 +72,7 @@
       <workItem from="1683104637501" duration="747000" />
       <workItem from="1683105470825" duration="845000" />
       <workItem from="1683106325585" duration="65000" />
+      <workItem from="1683106508744" duration="739000" />
     </task>
     <servers />
   </component>
