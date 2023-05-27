@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="341c520c-fca8-4576-b2e0-4b43f17d60a7" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/AsianCultrure-blog-Astro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AsianCultrure-blog-Astro.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
@@ -26,6 +27,12 @@
       <change beforePath="$PROJECT_DIR$/src/layouts/BaseLayout.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/BaseLayout.astro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/PostLayout.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/PostLayout.astro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/china.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/china.astro" afterDir="false" />
+=======
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> 2b48198bcf8a91e97f0be81df629b6fe49e79859
+>>>>>>> bcdfe860822a1ffe761694311a560b7c1590ed96
       <change beforePath="$PROJECT_DIR$/src/pages/index.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.astro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/japan.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/japan.astro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/korea.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/korea.astro" afterDir="false" />
@@ -53,6 +60,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/bogdanyunakov/Documents/AsianCultrure-blog-Astro",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -68,13 +87,18 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/bohdan_yun/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.9011.35/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+>>>>>>> 2b48198bcf8a91e97f0be81df629b6fe49e79859
   }
+<<<<<<< HEAD
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
+=======
+}]]></component>
+>>>>>>> bcdfe860822a1ffe761694311a560b7c1590ed96
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -107,10 +131,14 @@
       <workItem from="1677078338704" duration="11000" />
       <workItem from="1677091141787" duration="6000" />
       <workItem from="1682101106155" duration="697000" />
+<<<<<<< HEAD
+      <workItem from="1683212051879" duration="99000" />
+=======
       <workItem from="1683104637501" duration="747000" />
       <workItem from="1683105470825" duration="845000" />
       <workItem from="1683106325585" duration="65000" />
       <workItem from="1683106508744" duration="739000" />
+<<<<<<< HEAD
       <workItem from="1683113554586" duration="3467000" />
       <workItem from="1683128890730" duration="3420000" />
       <workItem from="1683218256604" duration="792000" />
@@ -118,6 +146,10 @@
       <workItem from="1685128687676" duration="869000" />
       <workItem from="1685177947975" duration="12377000" />
       <workItem from="1685214429805" duration="123000" />
+=======
+      <workItem from="1683113554586" duration="2839000" />
+>>>>>>> 2b48198bcf8a91e97f0be81df629b6fe49e79859
+>>>>>>> bcdfe860822a1ffe761694311a560b7c1590ed96
     </task>
     <servers />
   </component>
