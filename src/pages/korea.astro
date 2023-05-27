@@ -8,6 +8,7 @@ const allPosts = await Astro.glob('../pages/posts/*.md')
 	<h1>Korea</h1>
 	<a href="/tags/astro">Tags</a>
 	<ul>
+
 		{allPosts.map((post) => (
 			<BlogPost url={post.url} title={post.frontmatter.title}/>
 		))}		

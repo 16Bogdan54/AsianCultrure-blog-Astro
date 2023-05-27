@@ -1,7 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/blogpost/BlogPost.astro';
+
+const allPosts = await Astro.glob('../content/posts/*.md')
+
+const extractPostLink = (path:string): string => {
+	const startIndex = path.indexOf('/src/');
+	const endIndex = path.lastIndexOf('.md');
+
+	return path.substring(startIndex, endIndex+3);
+}
 ---
 
 <BaseLayout title="Japan">
 	<h1>Japan</h1>
+	<ul>
+		{allPosts.map((post) => (
+			<BlogPost url={extractPostLink(post.file)} title={post.frontmatter.title}/>
+		))}
+	</ul>
 </BaseLayout>
