@@ -28,14 +28,25 @@ export default defineConfig({
       {
         name: "post",
         label: "Posts",
-        path: "src/content/posts",
+        path: "src/content",
         format: 'md',
         fields: [
+          {
+            type: "image",
+            name: "heroImage",
+            label: "Hero Image",
+          },
           {
             type: "string",
             name: "title",
             label: "Title",
             isTitle: true,
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "pubDate",
+            label: "Date Posted",
             required: true,
           },
           {
