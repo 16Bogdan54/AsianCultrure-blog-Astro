@@ -4,6 +4,11 @@ import BlogPost from '../components/blogpost/BlogPost.astro';
 
 const allPosts = await Astro.glob('../content/posts/*.md')
 
+allPosts.forEach(post => {
+	console.log('1', post.file.split('/').pop().replace(/\.md?/,''))
+	console.log('2', post.file.substring(post.file.indexOf('/src/'), post.file.lastIndexOf('.md')))
+})
+
 const extractPostLink = (path:string): string => {
 	const startIndex = path.indexOf('/src/');
 	const endIndex = path.lastIndexOf('.md');
@@ -16,7 +21,16 @@ const extractPostLink = (path:string): string => {
 	<h1>Japan</h1>
 	<ul>
 		{allPosts.map((post) => (
-			<BlogPost url={extractPostLink(post.file)} title={post.frontmatter.title}/>
+			<li>
+				<time datetime={post.frontmatter.pubDate}>
+					{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric',
+					})}
+				</time>
+				<a href={post.file.split('/').pop().replace(/\.md?/,'')}>{post.frontmatter.title}</a>
+			</li>
 		))}
 	</ul>
 </BaseLayout>
