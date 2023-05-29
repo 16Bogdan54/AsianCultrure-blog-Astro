@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+    heroImage: string;
+    pubDate: string;
+    updateDate: string;
+}
+
+const {frontmatter} = Astro.props
+---
+
+<BaseLayout title={`Article | ${frontmatter.title}`}>
+    <article class="p-4">
+        {frontmatter.heroImage && (
+                <img src={frontmatter.heroImage} alt=""/>
+        )}
+        <h1 class="title">{frontmatter.title}</h1>
+        {frontmatter.pubDate && <time>{frontmatter.pubDate.substring(0,10)}</time>}
+        {frontmatter.updateDate && <div>Last updated on <time>{frontmatter.updateDate.substring(0,10)}</time></div>}
+        <hr/>
+        <slot />
+    </article>
+</BaseLayout>
+
