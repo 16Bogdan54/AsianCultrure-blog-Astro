@@ -57,6 +57,38 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "Korean Culture Posts",
+        label: "Korea",
+        path: "src/content/korea",
+        format: 'md',
+        fields: [
+          {
+            type: "image",
+            name: "heroImage",
+            label: "Hero Image",
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "pubDate",
+            label: "Date Posted",
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ]
+      },
     ],
   },
 });
