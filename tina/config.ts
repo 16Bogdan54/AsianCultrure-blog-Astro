@@ -1,12 +1,38 @@
-import { defineConfig } from "tinacms";
+import { defineConfig, TinaField } from "tinacms";
 import * as process from "process";
 
 const CLIENT_ID: string | undefined = process.env.TINA_CLIENT_ID;
 const TINA_TOKEN: string | undefined = process.env.TINA_TOKEN;
 
-
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+
+const postFields: TinaField[] = [
+  {
+    type: "image",
+    name: "heroImage",
+    label: "Hero Image",
+  },
+  {
+    type: "string",
+    name: "title",
+    label: "Title",
+    isTitle: true,
+    required: true,
+  },
+  {
+    type: "datetime",
+    name: "pubDate",
+    label: "Date Posted",
+    required: true,
+  },
+  {
+    type: "rich-text",
+    name: "body",
+    label: "Body",
+    isBody: true,
+  },
+];
 
 export default defineConfig({
   branch,
@@ -29,65 +55,29 @@ export default defineConfig({
         name: "post",
         label: "Posts",
         path: "src/content/posts",
-        format: 'md',
-        fields: [
-          {
-            type: "image",
-            name: "heroImage",
-            label: "Hero Image",
-          },
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "datetime",
-            name: "pubDate",
-            label: "Date Posted",
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
+        format: "md",
+        fields: postFields,
       },
       {
-        name: "Korean Culture Posts",
+        name: "Korean_Culture_Posts",
         label: "Korea",
-        path: "src/content/korea",
-        format: 'md',
-        fields: [
-          {
-            type: "image",
-            name: "heroImage",
-            label: "Hero Image",
-          },
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "datetime",
-            name: "pubDate",
-            label: "Date Posted",
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ]
+        path: "src/content/posts/korea_posts",
+        format: "md",
+        fields: postFields,
+      },
+      {
+        name: "Japanese_Culture_Posts",
+        label: "Japan",
+        path: "src/content/posts/japan_posts",
+        format: "md",
+        fields: postFields,
+      },
+      {
+        name: "Chinese_Culture_Posts",
+        label: "China",
+        path: "src/content/posts/china_posts",
+        format: "md",
+        fields: postFields,
       },
     ],
   },

@@ -1,11 +1,11 @@
-import {defineCollection} from "astro:content";
+import { z, defineCollection } from "astro:content";
 
-const blogCollection = defineCollection({
-    directoryPath: './posts',
-    pattern: '*.md',
-    sortBy: 'date'
-})
+const posts = defineCollection({
+  schema: z.object({
+    heroImage: z.string().optional(),
+    title: z.string(),
+    pubDate: z.date(),
+  }),
+});
 
-export const collection = {
-    'blog': blogCollection
-}
+export const collections = { posts };

@@ -1,30 +1,37 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const allPosts = await Astro.glob('../content/posts/*.md')
+import { getCollection } from "astro:content";
 
-const extractPostLink = (path:string): string => {
-	const startIndex = path.indexOf('/src/');
-	const endIndex = path.lastIndexOf('.md');
-
-	return path.substring(startIndex, endIndex+3);
-}
+const blogPosts = await getCollection("posts", (post) =>
+  post.id.startsWith("japan_posts")
+);
 ---
 
 <BaseLayout title="Japan">
-	<h1>Japan</h1>
-	<ul>
-		{allPosts.map((post) => (
-			<li>
-				<time datetime={post.frontmatter.pubDate}>
-					{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-						year: 'numeric',
-						month: 'short',
-						day: 'numeric',
-					})}
-				</time>
-				<a href={post.file.split('/').pop().replace(/\.md?/,'')}>{post.frontmatter.title}</a>
-			</li>
-		))}
-	</ul>
+  <h1>Japan</h1>
+  <ul class="flex gap-2 items-center flex-wrap">
+    {
+      blogPosts.map((post) => (
+        <li class="p-3 border">
+          <time datetime={post.data.pubDate}>
+            {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </time>
+          <p>id {post.id}</p>
+          <a
+            href={post.id
+              .split("/")
+              .pop()
+              .replace(/\.md(x)?/, "")}
+          >
+            {post.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>

@@ -1,29 +1,38 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const allPosts = await Astro.glob('../content/posts/*.md')
+import { getCollection } from "astro:content";
 
-allPosts.forEach(post => {
-	console.log('1', post.file.split('/').pop().replace(/\.md?/,''))
-	console.log('2', post.file.substring(post.file.indexOf('/src/'), post.file.lastIndexOf('.md')))
-})
+const blogPosts = await getCollection("posts", (post) =>
+  post.id.startsWith("korea_posts")
+);
 ---
 
 <BaseLayout title="Korea">
-	<h1>Korea</h1>
-	<a href="/tags/astro">Tags</a>
-	<ul>
-		{allPosts.map((post) => (
-			<li>
-				<time datetime={post.frontmatter.pubDate}>
-					{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-						year: 'numeric',
-						month: 'short',
-						day: 'numeric',
-					})}
-				</time>
-				<a href={post.file.split('/').pop().replace(/\.md?/,'')}>{post.frontmatter.title}</a>
-			</li>
-		))}
-	</ul>
+  <h1>Korea</h1>
+  <a href="/tags/astro">Tags</a>
+  <ul class="flex gap-2 items-center flex-wrap">
+    {
+      blogPosts.map((post) => (
+        <li class="p-3 border">
+          <time datetime={post.data.pubDate}>
+            {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </time>
+          <p>id {post.id}</p>
+          <a
+            href={post.id
+              .split("/")
+              .pop()
+              .replace(/\.md(x)?/, "")}
+          >
+            {post.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>

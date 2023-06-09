@@ -1,20 +1,26 @@
 ---
 import TinaLayout from "../layouts/TinaLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const allPosts = await Astro.glob('../content/posts/*.md')
+  const allPosts = await getCollection("posts");
 
-    return allPosts.map((post) => ({
-        params: {
-            slug: post.file.split('/').pop().replace(/\.md(x)?/,'')
-        },
-        props: { post },
-    }));
+  return allPosts.map((post) => ({
+    params: {
+      slug: post.id
+        .split("/")
+        .pop()
+        .replace(/\.md(x)?/, ""),
+    },
+    props: { post },
+  }));
 }
 
-const {frontmatter, Content} = Astro.props.post
+console.log("props", Astro.props.post);
+
+const { data, body } = Astro.props.post;
 ---
 
-<TinaLayout frontmatter={frontmatter}>
-    <Content/>
+<TinaLayout data={data}>
+  {body}
 </TinaLayout>

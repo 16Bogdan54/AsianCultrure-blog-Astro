@@ -2,24 +2,37 @@
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
-    heroImage: string;
-    pubDate: string;
-    updateDate: string;
+  heroImage: string;
+  pubDate: string;
+  updateDate: string;
 }
 
-const {frontmatter} = Astro.props
+const { data } = Astro.props;
 ---
 
-<BaseLayout title={`Article | ${frontmatter.title}`}>
-    <article class="p-4">
-        {frontmatter.heroImage && (
-                <img src={frontmatter.heroImage} alt=""/>
-        )}
-        <h1 class="title">{frontmatter.title}</h1>
-        {frontmatter.pubDate && <time>{frontmatter.pubDate.substring(0,10)}</time>}
-        {frontmatter.updateDate && <div>Last updated on <time>{frontmatter.updateDate.substring(0,10)}</time></div>}
-        <hr/>
-        <slot />
-    </article>
+<BaseLayout title={`Article | ${data.title}`}>
+  <article class="p-4">
+    {data.heroImage && <img src={data.heroImage} alt="" />}
+    <h1 class="title">{data.title}</h1>
+    {
+      data.pubDate && (
+        <time datetime={data.pubDate}>
+          {new Date(data.pubDate).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </time>
+      )
+    }
+    {
+      data.updateDate && (
+        <div>
+          Last updated on <time>{data.updateDate.substring(0, 10)}</time>
+        </div>
+      )
+    }
+    <hr />
+    <slot />
+  </article>
 </BaseLayout>
-
