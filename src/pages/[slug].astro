@@ -16,11 +16,13 @@ export async function getStaticPaths() {
   }));
 }
 
-console.log("props", Astro.props.post);
+const { Content } = await Astro.props.post.render();
+
+console.log("Content", Content);
 
 const { data, body } = Astro.props.post;
 ---
 
 <TinaLayout data={data}>
-  {body}
+  <Content />
 </TinaLayout>
