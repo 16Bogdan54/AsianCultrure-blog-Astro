@@ -1,10 +1,17 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogPost from '../../components/blogpost/BlogPost.astro';
-
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/blogpost/BlogPost.astro";
+import { getCollection } from "astro:content";
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob("../posts/*.md");
-  const tags = ["astro", "successes", "community", "blogging", "setbacks", "learning in public"];
+  const allPosts = await getCollection("posts");
+  const tags = [
+    "astro",
+    "successes",
+    "community",
+    "blogging",
+    "setbacks",
+    "learning in public",
+  ];
 
   return tags.map((tag) => ({
     params: { tag: tag },
@@ -15,15 +22,19 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 // @ts-ignore
-const filteredPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
+const filteredPosts = posts.filter((post) =>
+  post.frontmatter.tags.includes(tag)
+);
 ---
 
 <BaseLayout title={tag ? tag : "title"}>
   <p>Posts tagged with {tag}</p>
   <ul>
     {
-        // @ts-ignore
-        filteredPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title}/>)
+      // @ts-ignore
+      filteredPosts.map((post) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
     }
   </ul>
 </BaseLayout>
