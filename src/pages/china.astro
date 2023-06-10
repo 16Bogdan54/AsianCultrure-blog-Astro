@@ -3,9 +3,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import { getCollection } from "astro:content";
 
-const blogPosts = await getCollection("posts", (post) =>
-  post.id.startsWith("japan_posts")
-);
+let blogPosts;
+
+try {
+  blogPosts = await getCollection("posts", (post) =>
+    post.id.startsWith("china_posts")
+  );
+} catch (error) {
+  console.error(error);
+}
 ---
 
 <BaseLayout title="China">
