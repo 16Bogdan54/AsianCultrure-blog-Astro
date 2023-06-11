@@ -22,6 +22,9 @@ const blogPosts = await getCollection("posts", (post) =>
             })}
           </time>
           <p>id {post.id}</p>
+          {post.data.categories?.map((category) => (
+            <p class="bg-amber-200 px-2 py-1 m-2">{category}</p>
+          ))}
           <a
             href={post.id
               .split("/")

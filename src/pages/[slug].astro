@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 
 const { Content } = await Astro.props.post.render();
 
-const { data, body } = Astro.props.post;
+const { data } = Astro.props.post;
 ---
 
 <TinaLayout data={data}>

@@ -7,6 +7,26 @@ const TINA_TOKEN: string | undefined = process.env.TINA_TOKEN;
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
+type Tag = {
+  value: string;
+  label: string;
+};
+
+const tags: Tag[] = [
+  {
+    value: "culture",
+    label: "Culture",
+  },
+  {
+    value: "cooking",
+    label: "Cooking",
+  },
+  {
+    value: "history",
+    label: "History",
+  },
+];
+
 const postFields: TinaField[] = [
   {
     type: "image",
@@ -31,6 +51,13 @@ const postFields: TinaField[] = [
     name: "body",
     label: "Body",
     isBody: true,
+  },
+  {
+    label: "Categories",
+    name: "categories",
+    type: "string",
+    list: true,
+    options: tags,
   },
 ];
 
