@@ -25,6 +25,13 @@ const { data } = Astro.props;
         </time>
       )
     }
+    <div>
+      {
+        data.categories?.map((category) => (
+          <span class="bg-amber-200 px-2 py-1 m-2">{category}</span>
+        ))
+      }
+    </div>
     {
       data.updateDate && (
         <div>
