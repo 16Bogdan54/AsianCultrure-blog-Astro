@@ -52,13 +52,6 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "src/content/posts",
-        format: "md",
-        fields: postFields,
-      },
-      {
         name: "Korean_Culture_Posts",
         label: "Korea",
         path: "src/content/posts/korea_posts",
