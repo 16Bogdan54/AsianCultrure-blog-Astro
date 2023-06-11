@@ -10,7 +10,6 @@ const blogPosts = await getCollection("posts", (post) =>
 
 <BaseLayout title="Korea">
   <h1>Korea</h1>
-  <a href="/tags/astro">Tags</a>
   <ul class="flex gap-2 items-center flex-wrap">
     {
       blogPosts.map((post) => (
