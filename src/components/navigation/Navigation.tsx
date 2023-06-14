@@ -3,7 +3,7 @@ import { Navbar } from "flowbite-react";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 const Navigation: React.FC = () => {
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid>
       <Navbar.Brand href="/">
         <img src="/logo.svg" alt="logo" />
       </Navbar.Brand>
