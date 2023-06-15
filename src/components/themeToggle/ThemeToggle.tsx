@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { IoSunny, IoMoon } from "react-icons/io5";
+import { IoSunny } from "react-icons/io5";
+import { IoMoon } from "react-icons/io5";
 import { Button } from "flowbite-react";
 
 const ThemeToggle: React.FC = () => {
