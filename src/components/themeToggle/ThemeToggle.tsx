@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Icon } from "astro-icon";
+import moon from "../../../public/ui/moon.svg";
+import sun from "../../../public/ui/sun.svg";
 import { Button } from "flowbite-react";
 
 const ThemeToggle: React.FC = () => {
@@ -19,11 +20,14 @@ const ThemeToggle: React.FC = () => {
   }, [theme]);
 
   return (
-    <Button onClick={handleClick} className="px-2 border-none outline-none">
+    <Button
+      onClick={handleClick}
+      className="px-2 border-none outline-none text-gray-600 dark:text-gray-200"
+    >
       {localStorage.getItem("theme") === "light" ? (
-        <Icon name="ph:moon-fill" className="text-gray-500" />
+        <img src={moon} alt="moon" />
       ) : (
-        <Icon name="ph:sun-fill" className="text-gray-500" />
+        <img src={sun} alt="moon" />
       )}
     </Button>
   );
