@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
+import { IoSunny, IoMoon } from "react-icons/io5";
 import { Button } from "flowbite-react";
 
 const ThemeToggle: React.FC = () => {
@@ -21,9 +21,9 @@ const ThemeToggle: React.FC = () => {
   return (
     <Button onClick={handleClick} className="px-2 border-none outline-none">
       {localStorage.getItem("theme") === "light" ? (
-        <BsFillMoonFill className="text-gray-500" />
+        <IoMoon className="text-gray-500" />
       ) : (
-        <BsFillSunFill className="text-yellow-200" />
+        <IoSunny className="text-yellow-200" />
       )}
     </Button>
   );
