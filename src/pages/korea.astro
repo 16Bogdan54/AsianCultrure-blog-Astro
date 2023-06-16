@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Blogpost from "../components/blogpost/Blogpost";
 
 import { getCollection } from "astro:content";
 
@@ -13,28 +14,48 @@ const blogPosts = await getCollection("posts", (post) =>
   <ul class="flex gap-2 items-center flex-wrap">
     {
       blogPosts.map((post) => (
-        <li class="p-3 border">
-          <time datetime={post.data.pubDate}>
-            {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+        <li>
+          <Blogpost
+            url={post.id
+              .split("/")
+              .pop()
+              .replace(/\.md(x)?/, "")}
+            title={post.data.title}
+            date={new Date(post.data.pubDate).toLocaleDateString("en-us", {
               year: "numeric",
               month: "short",
               day: "numeric",
             })}
-          </time>
-          <p>id {post.id}</p>
-          {post.data.categories?.map((category) => (
-            <p class="bg-amber-200 px-2 py-1 m-2">{category}</p>
-          ))}
-          <a
-            href={post.id
-              .split("/")
-              .pop()
-              .replace(/\.md(x)?/, "")}
-          >
-            {post.data.title}
-          </a>
+          />
         </li>
       ))
     }
   </ul>
+  <!--<ul class="flex gap-2 items-center flex-wrap">-->
+  <!--  {-->
+  <!--    blogPosts.map((post) => (-->
+  <!--      <li class="p-3 border">-->
+  <!--        <time datetime={post.data.pubDate}>-->
+  <!--          {new Date(post.data.pubDate).toLocaleDateString("en-us", {-->
+  <!--            year: "numeric",-->
+  <!--            month: "short",-->
+  <!--            day: "numeric",-->
+  <!--          })}-->
+  <!--        </time>-->
+  <!--        <p>id {post.id}</p>-->
+  <!--        {post.data.categories?.map((category) => (-->
+  <!--          <p class="bg-amber-200 px-2 py-1 m-2">{category}</p>-->
+  <!--        ))}-->
+  <!--        <a-->
+  <!--          href={post.id-->
+  <!--            .split("/")-->
+  <!--            .pop()-->
+  <!--            .replace(/\.md(x)?/, "")}-->
+  <!--        >-->
+  <!--          {post.data.title}-->
+  <!--        </a>-->
+  <!--      </li>-->
+  <!--    ))-->
+  <!--  }-->
+  <!--</ul>-->
 </BaseLayout>

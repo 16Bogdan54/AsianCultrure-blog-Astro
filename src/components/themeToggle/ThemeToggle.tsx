@@ -4,31 +4,33 @@ import sun from "../../../public/ui/sun.svg";
 import { Button } from "flowbite-react";
 
 const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
+  const [theme, setTheme] = useState<string>("");
 
-  const handleClick = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+  const toggleTheme = () => {
+    const updatedTheme = theme === "light" ? "dark" : "light";
+    setTheme(updatedTheme);
+    localStorage.setItem("theme", updatedTheme);
   };
 
   useEffect(() => {
-    if (localStorage.getItem("theme") === "dark") {
+    const storedTheme = localStorage.getItem("theme");
+    setTheme(storedTheme ?? "light");
+    if (storedTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-    localStorage.setItem("theme", theme);
   }, [theme]);
+
+  const currentTheme = theme === "light" ? moon : sun;
+  const altText = theme === "light" ? "moon" : "sun";
 
   return (
     <Button
-      onClick={handleClick}
+      onClick={toggleTheme}
       className="px-2 border-none outline-none text-gray-600 dark:text-gray-200"
     >
-      {localStorage.getItem("theme") === "light" ? (
-        <img src={moon} alt="moon" />
-      ) : (
-        <img src={sun} alt="moon" />
-      )}
+      <img className="w-6 h-6" src={currentTheme} alt={altText} />
     </Button>
   );
 };
