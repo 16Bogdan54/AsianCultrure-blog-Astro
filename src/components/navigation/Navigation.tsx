@@ -5,7 +5,7 @@ const Navigation: React.FC = () => {
   return (
     <Navbar fluid>
       <Navbar.Brand href="/">
-        <img src="/ui/logo.svg" width={70} height={70} alt="logo" />
+        <img src="/logo.svg" alt="logo" />
       </Navbar.Brand>
       <div className="flex md:order-2">
         <ThemeToggle />
