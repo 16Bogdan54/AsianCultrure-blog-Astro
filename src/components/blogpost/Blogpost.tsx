@@ -1,6 +1,6 @@
 import type React from "react";
 import { Button, Card } from "flowbite-react";
-import arrow_right from "../../../public/ui/arrow_right.svg";
+import arrow_right from "../../ui/arrow_right.svg";
 
 interface Props {
   url: string;
