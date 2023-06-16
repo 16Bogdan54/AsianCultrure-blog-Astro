@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import moon from "../../ui/moon.svg";
-import sun from "../../ui/sun.svg";
+import moon from "../../icons/moon.svg";
+import sun from "../../icons/sun.svg";
 import { Button } from "flowbite-react";
 
 const ThemeToggle: React.FC = () => {
