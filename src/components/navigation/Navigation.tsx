@@ -1,11 +1,12 @@
 import type React from "react";
 import { Navbar } from "flowbite-react";
+import logo from "../../ui/logo.svg";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 const Navigation: React.FC = () => {
   return (
     <Navbar fluid>
       <Navbar.Brand href="/">
-        <img src="/src/ui/logo.svg" width={70} height={70} alt="logo" />
+        <img src={logo} width={70} height={70} alt="logo" />
       </Navbar.Brand>
       <div className="flex md:order-2">
         <ThemeToggle />
