@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 import { getCollection } from "astro:content";
+import BlogPost from "../components/blogpost/BlogPost.astro";
 
 let blogPosts;
 
@@ -16,26 +17,21 @@ try {
 
 <BaseLayout title="China">
   <h1>China</h1>
-  <ul class="flex gap-2 items-center flex-wrap">
+  <ul
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-5"
+  >
     {
       blogPosts.map((post) => (
-        <li class="p-3 border">
-          <time datetime={post.data.pubDate}>
-            {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+        <li>
+          <BlogPost
+            url={`/posts/${post.slug.split("/").pop()}`}
+            title={post.data.title}
+            date={new Date(post.data.pubDate).toLocaleDateString("en-us", {
               year: "numeric",
               month: "short",
               day: "numeric",
             })}
-          </time>
-          <p>id {post.id}</p>
-          <a
-            href={post.id
-              .split("/")
-              .pop()
-              .replace(/\.md(x)?/, "")}
-          >
-            {post.data.title}
-          </a>
+          />
         </li>
       ))
     }

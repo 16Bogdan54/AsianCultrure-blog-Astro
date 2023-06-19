@@ -1,1 +1,1 @@
-export const converDate = () => {};
+export const convertDate = () => {};

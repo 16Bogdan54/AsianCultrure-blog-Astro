@@ -1,25 +1,26 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Blogpost from "../components/blogpost/Blogpost";
+import BlogPost from "../components/blogpost/BlogPost.astro";
 
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("posts", (post) =>
   post.id.startsWith("korea_posts")
 );
+
+blogPosts.forEach((post) => console.log(post));
 ---
 
 <BaseLayout title="Korea">
   <h1>Korea</h1>
-  <ul class="flex gap-2 items-center flex-wrap">
+  <ul
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-5"
+  >
     {
       blogPosts.map((post) => (
         <li>
-          <Blogpost
-            url={post.id
-              .split("/")
-              .pop()
-              .replace(/\.md(x)?/, "")}
+          <BlogPost
+            url={`/posts/${post.slug.split("/").pop()}`}
             title={post.data.title}
             date={new Date(post.data.pubDate).toLocaleDateString("en-us", {
               year: "numeric",
