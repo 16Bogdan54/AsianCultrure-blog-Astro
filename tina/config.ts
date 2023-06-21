@@ -1,6 +1,5 @@
 import { defineConfig, TinaField } from "tinacms";
 import * as process from "process";
-import { string } from "astro/zod";
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const TINA_TOKEN = process.env.TINA_TOKEN;
