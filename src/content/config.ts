@@ -5,7 +5,9 @@ const posts = defineCollection({
     heroImage: z.string().optional(),
     title: z.string(),
     pubDate: z.date(),
-    categories: z.string().array().optional(),
+    category: z.string().optional(),
+    tags: z.string().array().optional(),
+    sourceLink: z.string().optional()
   }),
 });
 

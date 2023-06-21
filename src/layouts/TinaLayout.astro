@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { collections } from "../content/config";
+import { convertDate } from "../helpers/helpers";
 
 interface Props {
-  heroImage: string;
-  pubDate: string;
-  updateDate: string;
+  data: any;
 }
 
 const { data } = Astro.props;
@@ -13,31 +13,16 @@ const { data } = Astro.props;
 <BaseLayout title={`Article | ${data.title}`}>
   <article class="p-4">
     {data.heroImage && <img src={data.heroImage} alt="image" />}
-    <h1 class="title">{data.title}</h1>
     {
       data.pubDate && (
-        <time datetime={data.pubDate}>
-          {new Date(data.pubDate).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })}
-        </time>
+        <time datetime={data.pubDate}>{convertDate(data.pubDate)}</time>
       )
     }
-    <div>
-      {
-        data.categories?.map((category) => (
-          <span class="bg-amber-200 px-2 py-1 m-2">{category}</span>
-        ))
-      }
-    </div>
+    <p>Category: {data.category}</p>
+    {data.sourceLink && <a href={data.sourceLink}>Source</a>}
     {
-      data.updateDate && (
-        <div>
-          Last updated on <time>{data.updateDate.substring(0, 10)}</time>
-        </div>
-      )
+      data.tags &&
+        data.tags.map((tag: string) => <span class="m-3">{tag}</span>)
     }
     <hr />
     <div class="prose lg:prose-xl dark:prose-invert">
