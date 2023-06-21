@@ -1,8 +1,8 @@
 import { defineConfig, TinaField } from "tinacms";
 import * as process from "process";
+import { string } from "astro/zod";
 
-const CLIENT_ID: string | undefined = process.env.TINA_CLIENT_ID;
-const TINA_TOKEN: string | undefined = process.env.TINA_TOKEN;
+const { CLIENT_ID, TINA_TOKEN } = process.env;
 
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
@@ -18,12 +18,16 @@ const tags: Tag[] = [
     label: "Culture",
   },
   {
-    value: "cooking",
-    label: "Cooking",
-  },
-  {
     value: "history",
     label: "History",
+  },
+  {
+    value: "languages",
+    label: "Languages",
+  },
+  {
+    value: "cooking",
+    label: "Cooking",
   },
 ];
 
@@ -49,15 +53,33 @@ const postFields: TinaField[] = [
   {
     type: "rich-text",
     name: "body",
-    label: "Body",
+    label: "Post Body",
     isBody: true,
+    required: true,
   },
   {
-    label: "Categories",
-    name: "categories",
+    label: "Category",
+    name: "category",
     type: "string",
-    list: true,
+    list: false,
     options: tags,
+  },
+  {
+    label: "Source link",
+    name: "sourceLink",
+    type: "string",
+    description:
+      "In case if you use information from other resourses, than insert source link",
+  },
+  {
+    label: "Tags",
+    name: "tags",
+    type: "string",
+    description: "Add tags, for describing what your post is about.",
+    list: true,
+    ui: {
+      component: "tags",
+    },
   },
 ];
 
@@ -65,7 +87,6 @@ export default defineConfig({
   branch,
   clientId: CLIENT_ID ?? "", // Get this from tina.io
   token: TINA_TOKEN ?? "", // Get this from tina.io
-
   build: {
     outputFolder: "admin",
     publicFolder: "public",
@@ -79,23 +100,9 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "Korean_Culture_Posts",
-        label: "Korea",
-        path: "src/content/posts/korea_posts",
-        format: "md",
-        fields: postFields,
-      },
-      {
-        name: "Japanese_Culture_Posts",
-        label: "Japan",
-        path: "src/content/posts/japan_posts",
-        format: "md",
-        fields: postFields,
-      },
-      {
-        name: "Chinese_Culture_Posts",
-        label: "China",
-        path: "src/content/posts/china_posts",
+        name: "posts",
+        label: "Blog Posts",
+        path: "src/content/posts",
         format: "md",
         fields: postFields,
       },
