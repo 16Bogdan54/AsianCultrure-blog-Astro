@@ -2,7 +2,8 @@ import { defineConfig, TinaField } from "tinacms";
 import * as process from "process";
 import { string } from "astro/zod";
 
-const { CLIENT_ID, TINA_TOKEN } = process.env;
+const CLIENT_ID = process.env.CLIENT_ID;
+const TINA_TOKEN = process.env.TINA_TOKEN;
 
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
