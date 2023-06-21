@@ -1,7 +1,7 @@
 import { defineConfig, TinaField } from "tinacms";
 import * as process from "process";
 
-const TINA_CLIENT = process.env.TINA_CLIENT;
+const TINA_CLIENT_ID = process.env.TINA_CLIENT_ID;
 const TINA_TOKEN = process.env.TINA_TOKEN;
 
 // Your hosting provider likely exposes this as an environment variable
@@ -85,7 +85,7 @@ const postFields: TinaField[] = [
 
 export default defineConfig({
   branch,
-  clientId: TINA_CLIENT ?? "", // Get this from tina.io
+  clientId: TINA_CLIENT_ID ?? "", // Get this from tina.io
   token: TINA_TOKEN ?? "", // Get this from tina.io
   build: {
     outputFolder: "admin",
