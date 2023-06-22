@@ -6,6 +6,17 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {
+    colors: {
+      'text-light': '#0e0609',
+      'background-light': '#efdce2',
+      'primary': '#be7c6f',
+      'secondary': '#f9f6f1',
+      'accent-light': '#89703e',
+      'text-dark': '#f0f9f6f1',
+      'background-dark': '#1F2937',
+      'secondary-dark': '#100f0e',
+      'accent-dark': '#796c52',
+    },
     extend: {},
   },
   plugins: [

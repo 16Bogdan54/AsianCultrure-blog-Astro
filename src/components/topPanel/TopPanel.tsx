@@ -7,8 +7,10 @@ interface Props {
 
 const TopPanel = ({ title, tags }: Props) => {
   return (
-    <div className="flex flex-col lg:flex-row gap-6 p-6 bg-slate-600 grow mb-6 rounded-md">
-      <h2 className="text-3xl font-bold tracking-tight text-white">{title}</h2>
+    <div className="flex flex-col lg:flex-row gap-6 grow mb-6 rounded-md">
+      <h2 className="text-3xl font-bold tracking-tight text-text-light dark:text-text-dark">
+        {title}
+      </h2>
       <form className="flex-grow">
         <div className="flex">
           <label
@@ -23,7 +25,7 @@ const TopPanel = ({ title, tags }: Props) => {
             className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 dark:border-gray-700 dark:text-white rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             type="button"
           >
-            All Tags{" "}
+            All Tags
             <svg
               aria-hidden="true"
               className="w-4 h-4 ml-1"
@@ -53,7 +55,7 @@ const TopPanel = ({ title, tags }: Props) => {
                       id={tag}
                       type="checkbox"
                       value={tag}
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                      className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     />
                     <label
                       htmlFor={tag}
@@ -70,13 +72,13 @@ const TopPanel = ({ title, tags }: Props) => {
             <input
               type="search"
               id="search-dropdown"
-              className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+              className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-primary"
               placeholder="Search"
               required
             />
             <button
               type="submit"
-              className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary focus:bg-primary rounded-r-lg border  hover:bg-accent-light focus:outline-none"
             >
               <svg
                 aria-hidden="true"
