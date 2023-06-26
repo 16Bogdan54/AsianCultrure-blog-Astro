@@ -1,11 +1,11 @@
 ---
 import Icon from "astro-icon";
-import { collections } from "../../content/config";
-import { convertDate } from "../../helpers/helpers";
+import type { Post } from "../../types/types";
+import { convertDate } from "../../utils/utils";
 
 interface Props {
   url: string;
-  postData: collections.post;
+  postData: Post;
 }
 
 const { url, postData } = Astro.props;

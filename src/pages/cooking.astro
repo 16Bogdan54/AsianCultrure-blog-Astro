@@ -4,7 +4,7 @@ import BlogPost from "../components/blogpost/BlogPost.astro";
 import TopPanel from "../components/topPanel/TopPanel";
 
 import { getCollection } from "astro:content";
-import { getUniqueTags } from "../helpers/helpers";
+import { getUniqueTags } from "../utils/utils";
 
 let blogPosts;
 
@@ -12,6 +12,7 @@ try {
   blogPosts = await getCollection("posts", (post) =>
     post.data.category?.match("cooking")
   );
+  console.log(blogPosts[0].data);
 } catch (err) {
   alert(err);
 }
