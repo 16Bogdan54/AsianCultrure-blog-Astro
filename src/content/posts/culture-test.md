@@ -3,10 +3,6 @@ heroImage: /64yA7ZGc1.jpg
 title: culture test
 pubDate: 2023-06-20T21:00:00.000Z
 category: culture
-tag:
-  - Interests
-  - Culture
-  - Korea
 link: 'https://en.wikipedia.org/wiki/Apple'
 sourceLink: 'https://en.wikipedia.org/wiki/Apple'
 tags:
