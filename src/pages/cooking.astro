@@ -19,16 +19,9 @@ try {
 ---
 
 <BaseLayout title="Cooking">
-  <TopPanel title="Cooking" tags={getUniqueTags(blogPosts)} />
-  <ul
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-  >
-    {
-      blogPosts?.map((post) => (
-        <li>
-          <BlogPost url={`/posts/${post.slug}`} postData={post.data} />
-        </li>
-      ))
-    }
-  </ul>
+  <TopPanel
+    title="Cooking"
+    tags={getUniqueTags(blogPosts)}
+    searchList={blogPosts}
+  />
 </BaseLayout>

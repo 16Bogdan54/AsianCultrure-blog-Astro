@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/blogpost/BlogPost.astro";
 import TopPanel from "../components/topPanel/TopPanel";
+import Search from "../components/search/Search";
 
 import { getCollection } from "astro:content";
 import { getUniqueTags } from "../utils/utils";
@@ -18,16 +19,22 @@ try {
 ---
 
 <BaseLayout title="Culture">
-  <TopPanel title="Culture" tags={getUniqueTags(blogPosts)} />
-  <ul
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-  >
-    {
-      blogPosts?.map((post) => (
-        <li>
-          <BlogPost url={`/posts/${post.slug}`} postData={post.data} />
-        </li>
-      ))
-    }
-  </ul>
+  <TopPanel
+    client:load
+    title="Culture"
+    tags={getUniqueTags(blogPosts)}
+    searchList={blogPosts}
+  />
+  <!--<Search client:load searchList={blogPosts} />-->
+  <!--<ul-->
+  <!--  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"-->
+  <!--&gt;-->
+  <!--  {-->
+  <!--    blogPosts?.map((post) => (-->
+  <!--      <li>-->
+  <!--        <BlogPost url={`/posts/${post.slug}`} postData={post.data} />-->
+  <!--      </li>-->
+  <!--    ))-->
+  <!--  }-->
+  <!--</ul>-->
 </BaseLayout>
