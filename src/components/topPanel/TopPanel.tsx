@@ -60,9 +60,9 @@ const TopPanel = ({ title, tags, searchList }: Props) => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </button>
@@ -113,9 +113,9 @@ const TopPanel = ({ title, tags, searchList }: Props) => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   ></path>
                 </svg>
@@ -133,8 +133,8 @@ const TopPanel = ({ title, tags, searchList }: Props) => {
       </div>
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {posts.map((post) => (
-          <li>
+        {posts.map((post, index) => (
+          <li key={index}>
             <BlogPost url={`/posts/${post.slug}`} postData={post.data} />
           </li>
         ))}
