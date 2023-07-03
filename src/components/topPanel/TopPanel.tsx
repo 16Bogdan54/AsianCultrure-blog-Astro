@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import BlogPost from "../blogpost/BlogPost";
 import TagList from "../tagList/TagList";
 import Fuse from "fuse.js";
@@ -28,7 +28,7 @@ const TopPanel = ({ title, tags, searchList }: Props) => {
         .slice(0, 5)
     : searchList;
 
-  const handleOnSearch = ({ target = {} }) => {
+  const handleOnSearch = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
     setQuery(value);
   };
