@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BlogPost from "../blogpost/BlogPost";
 import TagList from "../tagList/TagList";
 import Fuse from "fuse.js";
+import { getUniqueTags } from "../../utils/utils";
 
 interface Props {
   title: string;
@@ -40,6 +41,7 @@ const TopPanel = ({ title, tags, searchList }: Props) => {
         </h2>
         <div className="flex-grow">
           <div className="flex">
+            <TagList tags={tags} />
             <div className="relative w-full">
               <input
                 type="search"
