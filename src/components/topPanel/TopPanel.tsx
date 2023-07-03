@@ -40,7 +40,6 @@ const TopPanel = ({ title, tags, searchList }: Props) => {
         </h2>
         <div className="flex-grow">
           <div className="flex">
-            <TagList tags={tags} />
             <div className="relative w-full">
               <input
                 type="search"

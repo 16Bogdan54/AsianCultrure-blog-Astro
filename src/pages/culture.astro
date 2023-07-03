@@ -4,6 +4,8 @@ import TopPanel from "../components/topPanel/TopPanel";
 
 import { getCollection } from "astro:content";
 import { getUniqueTags } from "../utils/utils";
+import TagList from "../components/tagList/TagList";
+import React from "react";
 
 let blogPosts;
 
@@ -17,6 +19,7 @@ try {
 ---
 
 <BaseLayout title="Culture">
+  <TagList tags={getUniqueTags(blogPosts)} />
   <TopPanel
     client:load
     title="Culture"
