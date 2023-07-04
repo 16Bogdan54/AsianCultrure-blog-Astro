@@ -30,7 +30,7 @@ const TopPanel = ({ title, searchList }: Props) => {
           .map((res) => res.item)
           .slice(0, 5)
       : searchList;
-  }, [query]);
+  }, []);
 
   const handleOnSearch = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
