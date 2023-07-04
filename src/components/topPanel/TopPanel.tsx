@@ -19,17 +19,18 @@ const options = {
 
 const TopPanel = ({ title, searchList }: Props) => {
   const [query, setQuery] = useState("");
+  const [posts, setPosts] = useState([]);
   const fuse = new Fuse(searchList, options);
 
-  let posts: any[] = [];
-
   useEffect(() => {
-    posts = query
+    const posts = query
       ? fuse
           .search(query)
           .map((res) => res.item)
           .slice(0, 5)
       : searchList;
+    // @ts-ignore
+    setPosts(posts);
   }, []);
 
   const handleOnSearch = ({ target }: ChangeEvent<HTMLInputElement>) => {
