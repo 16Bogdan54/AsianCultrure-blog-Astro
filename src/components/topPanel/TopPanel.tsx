@@ -31,7 +31,7 @@ const TopPanel = ({ title, searchList }: Props) => {
       : searchList;
     // @ts-ignore
     setPosts(posts);
-  }, []);
+  }, [query]);
 
   const handleOnSearch = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
