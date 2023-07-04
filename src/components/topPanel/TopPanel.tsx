@@ -6,7 +6,7 @@ import { getUniqueTags } from "../../utils/utils";
 
 interface Props {
   title: string;
-  tags: string[];
+  // tags: string[];
   searchList: any[];
 }
 
@@ -17,7 +17,7 @@ const options = {
   threshold: 0.5,
 };
 
-const TopPanel = ({ title, tags, searchList }: Props) => {
+const TopPanel = ({ title, searchList }: Props) => {
   const [query, setQuery] = useState("");
   const fuse = new Fuse(searchList, options);
 
@@ -41,7 +41,7 @@ const TopPanel = ({ title, tags, searchList }: Props) => {
         </h2>
         <div className="flex-grow">
           <div className="flex">
-            <TagList tags={tags} />
+            <TagList tags={getUniqueTags(posts)} />
             <div className="relative w-full">
               <input
                 type="search"

@@ -18,10 +18,5 @@ try {
 ---
 
 <BaseLayout title="History">
-  <TopPanel
-    client:load
-    title="History"
-    tags={getUniqueTags(blogPosts)}
-    searchList={blogPosts}
-  />
+  <TopPanel client:load title="History" searchList={blogPosts} />
 </BaseLayout>
