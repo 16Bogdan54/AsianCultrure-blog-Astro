@@ -1,27 +1,44 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import { convertDate } from "../utils/utils";
+import React from "react";
 
 const { data } = Astro.props;
 ---
 
 <BaseLayout title={`Article | ${data.title}`}>
   <article class="p-4">
-    {data.heroImage && <img src={data.heroImage} alt="image" />}
     {
-      data.pubDate && (
-        <time datetime={data.pubDate}>{convertDate(data.pubDate)}</time>
+      data.heroImage && (
+        <img class="object-cover h-96 w-96" src={data.heroImage} alt="image" />
       )
     }
-    <p>Category: {data.category}</p>
-    {data.sourceLink && <a href={data.sourceLink}>Source</a>}
     {
-      data.tags &&
-        data.tags.map((tag: string) => <span class="m-3">{tag}</span>)
+      data.pubDate && (
+        <time datetime={data.pubDate}>Posted: {convertDate(data.pubDate)}</time>
+      )
     }
-    <hr />
-    <div class="prose lg:prose-xl dark:prose-invert">
+    <p class="mb-2 font-medium">Category: {data.category}</p>
+    <!--{data.sourceLink && <a href={data.sourceLink}>Source</a>}-->
+    <div class="flex flex-wrap mb-3">
+      {
+        data.tags &&
+          data.tags.map((tag: string) => (
+            <span class="me-3 bg-accent-dark text-white px-2 py-1 rounded-md">
+              {tag}
+            </span>
+          ))
+      }
+    </div>
+    <hr class="h-px bg-gray-700 border-0 dark:bg-gray-200 mb-4" />
+    <div class="prose lg:prose-xl dark:prose-invert mb-3">
       <slot />
     </div>
+    <a
+      class="shadow w-autoflex justify-center items-center px-4 py-2 text-lg font-medium text-center text-white bg-primary rounded-lg hover:shadow-xl focus:outline-none dark:hover:shadow-xl hover:-translate-y-2 dark:hover:-translate-y-2 transition ease-in-out delay-150"
+      href={data.sourceLink}
+    >
+      See source
+    </a>
   </article>
 </BaseLayout>

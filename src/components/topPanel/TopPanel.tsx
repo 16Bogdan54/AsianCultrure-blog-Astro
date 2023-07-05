@@ -3,10 +3,11 @@ import BlogPost from "../blogpost/BlogPost";
 import TagList from "../tagList/TagList";
 import Fuse from "fuse.js";
 import { getUniqueTags } from "../../utils/utils";
+import SearchBar from "../searchBar/SearchBar";
+import { post } from "axios";
 
 interface Props {
   title: string;
-  // tags: string[];
   searchList: any[];
 }
 
@@ -20,22 +21,59 @@ const options = {
 const TopPanel = ({ title, searchList }: Props) => {
   const [query, setQuery] = useState("");
   const [posts, setPosts] = useState([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
   const fuse = new Fuse(searchList, options);
 
   useEffect(() => {
-    const posts = query
+    let posts = query
       ? fuse
           .search(query)
           .map((res) => res.item)
           .slice(0, 5)
       : searchList;
+
+    // // @ts-ignore
+    // setPosts(posts);
+
+    if (selectedTags.length !== 0) {
+      function filterPosts(posts: any[], selectedTags: string[]) {
+        console.log(posts);
+        return posts.filter((post) => {
+          const { tags } = post.data;
+          return tags.some((tag: string) => selectedTags.includes(tag));
+        });
+      }
+
+      posts = filterPosts(searchList, selectedTags);
+
+      // posts = searchList.filter((post) => {
+      //   return post.data.tags.filter((tag: string) => {
+      //     return selectedTags.some((selectedTag) => tag.includes(selectedTag));
+      //   });
+      // });
+    }
+
     // @ts-ignore
     setPosts(posts);
-  }, [query]);
+  }, [query, selectedTags]);
 
   const handleOnSearch = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
     setQuery(value);
+  };
+
+  const handleTagsSelect = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = target;
+
+    if (checked) {
+      setSelectedTags((prevTags) => [...prevTags, value]);
+    } else {
+      setSelectedTags((prevTags) => prevTags.filter((tag) => tag !== value));
+      console.log("posts", searchList);
+      // @ts-ignore
+      setPosts(searchList);
+    }
   };
 
   return (
@@ -46,36 +84,12 @@ const TopPanel = ({ title, searchList }: Props) => {
         </h2>
         <div className="flex-grow">
           <div className="flex">
-            <TagList tags={getUniqueTags(posts)} />
-            <div className="relative w-full">
-              <input
-                type="search"
-                id="search-dropdown"
-                className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-primary"
-                placeholder="Search"
-                value={query}
-                onChange={handleOnSearch}
-              />
-              <div className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary rounded-r-lg border">
-                <svg
-                  aria-hidden="true"
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
+            <TagList
+              tags={getUniqueTags(posts)}
+              handleFunction={handleTagsSelect}
+            />
+            <SearchBar query={query} handler={handleOnSearch} />
           </div>
-
           {query.length > 1 && (
             <p>
               Found {posts.length} {posts.length === 1 ? "result" : "results"}{" "}

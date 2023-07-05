@@ -1,10 +1,11 @@
-import React from "react";
+import type { ChangeEventHandler } from "react";
 
 interface Props {
   tags: string[];
+  handleFunction: ChangeEventHandler;
 }
 
-const TagList = ({ tags }: Props) => {
+const TagList = ({ tags, handleFunction }: Props) => {
   return (
     <>
       <button
@@ -36,13 +37,17 @@ const TagList = ({ tags }: Props) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdown-button"
         >
-          {tags.map((tag: string) => (
-            <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          {tags.map((tag: string, index) => (
+            <li
+              className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600"
+              key={index}
+            >
               <div className="flex items-center pl-3">
                 <input
                   id={tag}
                   type="checkbox"
                   value={tag}
+                  onChange={handleFunction}
                   className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                 />
                 <label
