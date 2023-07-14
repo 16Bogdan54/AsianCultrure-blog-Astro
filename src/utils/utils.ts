@@ -9,10 +9,9 @@ export const convertDate = (date: Date): string => {
 export const getUniqueTags = (blogPosts: any): string[] => {
   return Array.from(
     blogPosts.reduce((tagSet: any, post: any) => {
+      const tags: string[] = post.data.tags;
 
-      const tags: string[] = post.data.tags
-
-      if(tags) tags.forEach((tag: string) => tagSet.add(tag));
+      if (tags) tags.forEach((tag: string) => tagSet.add(tag));
 
       return tagSet;
     }, new Set())

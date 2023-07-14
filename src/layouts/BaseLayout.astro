@@ -43,6 +43,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#ffffff" />
     <title>{title}</title>
+
     <script is:inline>
       const setTheme = (theme) => {
         if (theme === "light") {
@@ -70,6 +71,7 @@ const { title } = Astro.props;
 
       setTheme(theme);
     </script>
+
     <script
       is:inline
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"

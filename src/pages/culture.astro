@@ -1,11 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import TopPanel from "../components/topPanel/TopPanel";
+import Posts from "../components/posts/Posts";
 
 import { getCollection } from "astro:content";
-import { getUniqueTags } from "../utils/utils";
-import TagList from "../components/tagList/TagList";
-import React from "react";
 
 let blogPosts;
 
@@ -19,5 +16,5 @@ try {
 ---
 
 <BaseLayout title="Culture">
-  <TopPanel client:load title="Culture" searchList={blogPosts} />
+  <Posts client:load title="Culture" searchList={blogPosts} />
 </BaseLayout>
