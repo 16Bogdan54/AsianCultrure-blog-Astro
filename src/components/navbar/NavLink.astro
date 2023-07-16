@@ -1,0 +1,7 @@
+---
+import style from "./navbar.module.css";
+
+const { link } = Astro.props;
+---
+
+<a class={`${style.nav_link}`} aria-current="page" href={link}><slot /></a>

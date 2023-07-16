@@ -1,6 +1,11 @@
 ---
+import NavLink from "./NavLink.astro";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import Icon from "astro-icon";
+
+import style from './navbar.module.css'
+
+const links: string[] = ["Culture", "History", "Languages", "Cooking"];
 ---
 
 <nav
@@ -18,7 +23,7 @@ import Icon from "astro-icon";
       <button
         data-collapse-toggle="navbar-sticky"
         type="button"
-        class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class={`${style.menu_btn} dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`}
         aria-controls="navbar-sticky"
         aria-expanded="false"
       >
@@ -31,44 +36,13 @@ import Icon from "astro-icon";
       id="navbar-sticky"
     >
       <ul
-        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        class={`${style.nav_list} dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700`}
       >
-        <li>
-          <a
-            class="block py-2 px-4 text-gray-500 dark:text-gray-200 hover:-translate-y-1 transition ease-in-out delay-150"
-            aria-current="page"
-            href="/culture"
-          >
-            Culture
-          </a>
-        </li>
-        <li>
-          <a
-            class="block py-2 px-4 text-gray-500 dark:text-gray-200 hover:-translate-y-1 transition ease-in-out delay-150"
-            aria-current="page"
-            href="/history"
-          >
-            History
-          </a>
-        </li>
-        <li>
-          <a
-            class="block py-2 px-4 text-gray-500 dark:text-gray-200 hover:-translate-y-1 transition ease-in-out delay-150"
-            aria-current="page"
-            href="/languages"
-          >
-            Languages
-          </a>
-        </li>
-        <li>
-          <a
-            class="block py-2 px-4 text-gray-500 dark:text-gray-200 hover:-translate-y-1 transition ease-in-out delay-150"
-            aria-current="page"
-            href="/cooking"
-          >
-            Cooking
-          </a>
-        </li>
+        {links.map((link: string, i: number) => (
+            <li>
+              <NavLink link={`/${link.toLowerCase()}`}>{link}<NavLink/>
+            </li>
+        ))}
       </ul>
     </div>
   </div>
