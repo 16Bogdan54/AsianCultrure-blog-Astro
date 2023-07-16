@@ -45,7 +45,7 @@ const Posts = ({ title, searchList }: Props) => {
   return (
     <>
       <div className={style.wrapper}>
-        <h2 className={style.title}>{title}</h2>
+        <h2 className={`${style.title} dark:text-text-dark`}>{title}</h2>
         <div className="flex-grow">
           <div className="flex">
             <TagList

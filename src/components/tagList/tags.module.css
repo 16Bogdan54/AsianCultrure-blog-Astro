@@ -1,0 +1,19 @@
+.dropdown_btn {
+    @apply flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300
+}
+
+.dropdown_list {
+    @apply z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 py-2 text-sm text-gray-700
+}
+
+.tag_input {
+    @apply w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2
+}
+
+.tag_label {
+    @apply w-full py-3 ml-2 text-sm font-medium text-gray-900
+}
+
+.tag_li_wrapper {
+    @apply w-full border-b border-gray-200 rounded-t-lg
+}

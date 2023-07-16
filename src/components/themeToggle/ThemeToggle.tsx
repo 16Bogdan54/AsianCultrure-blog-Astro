@@ -1,37 +1,25 @@
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import useTheme from "../../hooks/useTheme";
+
 import moon from "../../icons/moon.svg";
 import sun from "../../icons/sun.svg";
-import { Button } from "flowbite-react";
+
+import style from "./toggle.module.css";
 
 const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState<string>("");
-
-  const toggleTheme = () => {
-    const updatedTheme = theme === "light" ? "dark" : "light";
-    setTheme(updatedTheme);
-    localStorage.setItem("theme", updatedTheme);
-  };
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    setTheme(storedTheme ?? "light");
-    if (storedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
-
-  const currentTheme = theme === "light" ? moon : sun;
-  const altText = theme === "light" ? "moon" : "sun";
+  const [toggleTheme, theme] = useTheme();
 
   return (
-    <Button
+    <button
       onClick={toggleTheme}
-      className="px-2 border-none outline-none text-gray-600 dark:text-gray-200"
+      className={`${style.theme_btn} dark:text-gray-200 `}
     >
-      <img className="w-6 h-6" src={currentTheme} alt={altText} />
-    </Button>
+      <img
+        className="w-6 h-6"
+        src={theme === "light" ? moon : sun}
+        alt={theme.concat("-theme")}
+      />
+    </button>
   );
 };
 
