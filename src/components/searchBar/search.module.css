@@ -1,0 +1,7 @@
+.search_input {
+    @apply block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 focus:ring-primary focus:border-primary
+}
+
+.icon_bg {
+    @apply absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary rounded-r-lg border
+}

@@ -1,4 +1,5 @@
 import type { ChangeEventHandler } from "react";
+import style from "./search.module.css";
 
 interface Props {
   query: string;
@@ -11,12 +12,12 @@ const SearchBar = ({ query, handler }: Props) => {
       <input
         type="search"
         id="search-dropdown"
-        className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-100 border-l-2 border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-primary"
+        className={`${style.search_input} dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-primary`}
         placeholder="Search"
         value={query}
         onChange={handler}
       />
-      <div className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary rounded-r-lg border">
+      <div className={`${style.icon_bg}`}>
         <svg
           aria-hidden="true"
           className="w-5 h-5"
